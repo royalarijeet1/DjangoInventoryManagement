@@ -1,0 +1,52 @@
+{% extends 'partials/base.html' %}
+{% block title %}View Components{% endblock %}
+{% load crispy_forms_tags %}
+
+{% block content %}
+
+<div class="row my-4">
+    <div class="col-md-12 offset-md-0">
+        <div class="border p-3 bg-white">
+            <h4>Components for {{ assembly.name }} in product {{ item.name }}</h4>
+            <hr>
+                <table class="table bg-white">
+                    <thead class="bg-info text-white">
+                        <tr>
+                            <th scope="col">Description</th>
+                            <th scope="col">Specification</th>
+                            <th scope="col">Supplier</th>
+                            <th scope="col">Make</th>
+                            <th scope="col">Package_Size</th>
+                            <th scope="col">Quantity</th>
+                            <th scope="col">UOM</th>
+                            <th scope="col">Identity</th>
+                            <th scope="col">Tol Percentage</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+
+                  {% for component in components %}
+
+                      {% if component.assembly.id == id %}
+                        <tr>
+                          <td>{{ component.description }}</td>
+                            <td>{{ component.specification }}</td>
+                            <td>{{ component.supplier }}</td>
+                            <td>{{ component.make }}</td>
+                            <td>{{ component.package_size }}</td>
+                            <td>{{ component.quantity }}</td>
+                            <td>{{ component.uom }}</td>
+                            <td>{{ component.identity }}</td>
+                            <td>{{ component.tol_percentage }}</td>
+                        </tr>
+                      {% endif %}
+                  {% endfor %}
+
+              </tbody>
+                </table>
+        </div>
+    </div>
+</div>
+
+
+{% endblock %}
